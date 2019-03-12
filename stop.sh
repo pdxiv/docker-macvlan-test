@@ -1,0 +1,7 @@
+#!/bin/bash
+
+PARENT_INTERFACE=wlp1s0
+MACVLAN_INTERFACE=wlp1s1
+
+ip link set $MACVLAN_INTERFACE down
+ip link delete $MACVLAN_INTERFACE
