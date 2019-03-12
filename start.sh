@@ -1,7 +1,7 @@
 #!/bin/bash
 
-PARENT_INTERFACE=wlp1s0
-MACVLAN_INTERFACE=wlps1
+PARENT_INTERFACE=`ip route | perl -nle 'print $1 if /^default.* dev (\S+)/'`
+MACVLAN_INTERFACE=macvlan0
 
 # Create macvlan interface on the host, name it and link  it to the original interface
 ip link add dev $MACVLAN_INTERFACE link $PARENT_INTERFACE type macvlan
